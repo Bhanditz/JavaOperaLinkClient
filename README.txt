@@ -6,10 +6,11 @@
 Introduction
 ============
 
-This is the Opera Link Public API client library for Android.
+This is the Opera Link Public API client library for Java.
 It provides utilities to get and manipulate Opera Bookmarks, Notes and
 Speed Dials. The application which uses it should provide the library with an
-application key and secret key received from link.opera.com.
+application key and secret key received from 
+https://auth.opera.com/service/oauth.
 The library takes care of authorizing the user and giving easy access to get and
 modify his Opera Link data.
 
@@ -47,31 +48,14 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-Library dependencies
-====================
-For convenience, we have included pre-compiled versions of several
-libraries this code depends on:
+Building
+========
 
-oauth2.jar
-commons-codec-1.4.jar
-commons-httpclient-3.1.jar
-jetty-6.1.11.jar
-jetty-util-6.1.11.jar
+This project can easily be built using Maven.
+mvn install
 
-You can download the source code for them from the following locations:
-
-OAuth: http://code.google.com/p/oauth/
-Commons: http://commons.apache.org/
-Jetty: http://www.eclipse.org/jetty/
-
-OAuth and Commons are distributed under the Apache License. See a copy
-of the license in the LICENSE-2.0.txt file.
-
-Jetty has a dual license (Apache License 2.0 or Eclipse Public License
-1.0). See a copy of the Eclipse Public License in the Eclipse Public
-License - Version 1.0.htm file. Also, see exceptions to the dual
-license in the NOTICE.TXT file.
-
+Will generate the opera-link-client.jar file in the target folder. And
+install it into the local maven repository.
 
 Usage description
 =================
@@ -85,17 +69,15 @@ server, the application must be granted access. To do so OAuth 1.0a protocol
 based authorization method is performed. The application must be registered
 at https://auth.opera.com/service/oauth/applications/ and have its consumerKey
 and consumerSecret. Register your app as a Web Application, this way you will
-be able to specify a callback  URL - if you do that and add the URL to intent
-filters then the Android browser will automatically redirect a user back
-to the application. The example uses "notes://operalink.notes.com" as a callback 
-URL.
+be able to specify a callback  URL.
 
 1. Authorization
 ----------------
 
 To authorize a new user LinkClient object must be created. It obtains a request
 token and generates the authorization website address where the user must be
-redirected:
+redirected. This example is taken from the AndroidNotes application:
+
     // create new connection
     link = new LinkClient(consumerKey, consumerSecret);
 
@@ -236,5 +218,5 @@ notes and bookmarks speed dials can not be moved.
 
 BookmarkFolder and NoteFolder have some special properties you can access.
 Those are related to their special use on the devices, for example Opera
-Mini users can only access a folder for witch isTargetMini method returns true.
+Mini users can only access a folder for which isTargetMini method returns true.
 For more details see documentation.
