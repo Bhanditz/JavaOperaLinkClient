@@ -44,6 +44,10 @@ public abstract class Element {
 	protected static final String TARGET_JSON_FIELD = "target";
 	protected static final String TYPE_JSON_FIELD = "type";
 	protected static final String CONTENT_JSON_FIELD = "content";
+	protected static final String ENCODING_JSON_FIELD = "encoding";
+	protected static final String ISPOST_JSON_FIELD = "is_post";
+	protected static final String POSTQUERY_JSON_FIELD = "post_query";
+	protected static final String KEY_JSON_FIELD = "key";
 	
 	
 	abstract void loadParameters(JSONObject json) throws JSONException;
@@ -107,6 +111,12 @@ public abstract class Element {
 			}
 			if (item_type.equals(SpeedDial.ITEM_TYPE)) {
 				element = (T) new SpeedDial();
+			}
+			if (item_type.equals(UrlFilter.ITEM_TYPE)) {
+				element = (T) new UrlFilter();
+			}
+			if (item_type.equals(SearchEngine.ITEM_TYPE)) {
+				element = (T) new SearchEngine();
 			}
 			
 			// set properties of new created object

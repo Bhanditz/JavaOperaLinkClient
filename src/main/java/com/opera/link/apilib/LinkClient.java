@@ -29,6 +29,8 @@ import com.opera.link.apilib.items.FolderEntry;
 import com.opera.link.apilib.items.FolderInterface;
 import com.opera.link.apilib.items.NoteFolderEntry;
 import com.opera.link.apilib.items.SpeedDial;
+import com.opera.link.apilib.items.UrlFilter;
+import com.opera.link.apilib.items.SearchEngine;
 
 import net.oauth.OAuth;
 
@@ -408,6 +410,30 @@ public class LinkClient {
 		return requestItems(SpeedDial.class, SpeedDial.ITEM_TYPE, false, null);
 	}
 
+	/**
+	 * Fetches from the OperaLink server and returns all of the UriFilters
+	 * 
+	 * @return UrlFilters list
+	 * @throws LibOperaLinkException
+	 */
+	public ArrayList<UrlFilter> getUrlFilters() throws LinkItemNotFound,
+			LinkAccessDeniedException, LinkResponseFormatException,
+			LibOperaLinkException {
+		return requestItems(UrlFilter.class, UrlFilter.ITEM_TYPE, false, null);
+	}
+	
+	/**
+	 * Fetches from the OperaLink server and returns all of the Search Engines
+	 * 
+	 * @return UriFilters list
+	 * @throws LibOperaLinkException
+	 */
+	public ArrayList<SearchEngine> getSearchEngines() throws LinkItemNotFound,
+			LinkAccessDeniedException, LinkResponseFormatException,
+			LibOperaLinkException {
+		return requestItems(SearchEngine.class, SearchEngine.ITEM_TYPE, false, null);
+	}
+	
 	/**
 	 * Gets from the OperaLink server and returns element of datatype which has
 	 * specified id
