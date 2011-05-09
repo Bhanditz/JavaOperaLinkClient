@@ -1,6 +1,6 @@
-==============================================
- AndroidOperaLink - Android Opera Link Client
-==============================================
+======================================================
+ JavaOperaLinkClient - Java Opera Link Client library
+======================================================
 
 
 Introduction
@@ -9,7 +9,7 @@ Introduction
 This is the Opera Link Public API client library for Java.
 It provides utilities to get and manipulate Opera Bookmarks, Notes and
 Speed Dials. The application which uses it should provide the library with an
-application key and secret key received from 
+application key and secret key received from
 https://auth.opera.com/service/oauth.
 The library takes care of authorizing the user and giving easy access to get and
 modify his Opera Link data.
@@ -74,9 +74,11 @@ be able to specify a callback  URL.
 1. Authorization
 ----------------
 
-To authorize a new user LinkClient object must be created. It obtains a request
-token and generates the authorization website address where the user must be
-redirected. This example is taken from the AndroidNotes application:
+To authorize a new user LinkClient object must be created. It obtains
+a request token and generates the authorization website address where
+the user must be redirected. This example is taken from the
+AndroidNotes application
+(https://github.com/operasoftware/AndroidNotes):
 
     // create new connection
     link = new LinkClient(consumerKey, consumerSecret);
